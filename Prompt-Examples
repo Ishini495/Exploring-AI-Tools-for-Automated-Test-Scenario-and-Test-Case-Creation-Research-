@@ -1,0 +1,132 @@
+Prompt for Automated UI, Functional, and Validation Test Scenario Creation
+
+
+I need comprehensive test scenarios for a web application screen. Please generate detailed test cases in a table
+format.
+CONTEXT:**
+- Application: Hotel Management System (Inspire HMS)
+- Module: Front Office
+- Screen: Create Bed Types
+- User Role: System Administrator
+**NAVIGATION:**
+1. Login to: http://login.inspire.destinity.lk/
+2. Use credentials: Username - SCIENTER, Password - Password@123
+3. Select a property
+4. Go to Front Office → Admin → Bed Types
+**MAIN FUNCTIONS:**
+- Add new bed type (Name field + Active checkbox)
+- Edit existing bed type
+- Delete bed type (with confirmation)
+- View bed types in a grid
+- Search/filter functionality
+- Toggle active status
+**INPUT FIELD RULES:**
+- Name: Required, unique, max 50 characters
+- Active: Checkbox (default: checked)
+**TEST CATEGORIES TO COVER:**
+1. Functional Testing (FUN)
+2. UI/UX Testing (UI)
+3. Database Testing (DB)
+4. Input Validation (INPUTVAL)
+**OUTPUT FORMAT:**
+Please provide in a table with these columns:
+Scenario Name | Category (DB, FUN, INPUTVAL, UI) | Severity (Critical, High, Medium, Low) | Status | Written
+By| Executed By | Dev | Defect ID | Remarks
+**SPECIAL NOTES:**
+- System should prevent deletion if beds are assigned to rooms
+- Should support multi-browsers
+- Include both positive and negative test cases
+Please generate all possible test scenarios covering all mentioned categories.
+I will provide the navigation path using a Word file with screenshots
+
+
+Prompt for Automated Integration Test Scenario Creation Across Modules
+
+
+Generate comprehensive integration test scenarios between two connected modules in a hotel management
+system.
+**INTEGRATION CONTEXT:**
+- Primary Module: Bed Types
+- Integrated Module: Room Details
+- Integration Point: "Bed Type" dropdown field in Room Details screen
+- Data Flow Direction: Bed Types → Room Details
+**BUSINESS RULES:**
+1. The Room Details screen has a dropdown field called "Bed Type"
+2. This dropdown must display ONLY bed types marked as "Active" in the Bed Types module
+3. Bed types marked as "Inactive" should NOT appear in the dropdown
+4. When a new bed type is created and marked active, it should immediately be available in the dropdown
+5. When an active bed type is marked inactive, it should disappear from the dropdown
+6. Rooms already assigned an inactive bed type should [specify: remain assigned/show warning/force change]
+**INTEGRATION TRIGGERS:**
+- CREATE: New active bed type added → Appears in dropdown
+- UPDATE: Bed type name changed → Updated in dropdown
+- STATUS CHANGE: Active → Inactive → Removed from dropdown
+- STATUS CHANGE: Inactive → Active → Added to dropdown
+- DELETE: Bed type deleted → [Define behavior for assigned rooms]
+**DATA REQUIREMENTS:**
+- Dropdown should show: Bed Type Name (and optionally ID)
+- Data sync should be real-time
+- No duplicate bed types in dropdown
+**SPECIAL CONSIDERATIONS:**
+- Multi-user scenario: User A modifying bed types while User B is creating a room
+**TEST CATEGORIES TO COVER:**
+1. Data Integration Testing
+**OUTPUT FORMAT:**
+Please provide test scenarios in this table format:
+Scenario Name | Category (INT) | Severity (Critical, High, Medium, Low) | Status | Written By | Executed By | Dev
+| Defect ID | Remarks |
+Please generate all possible integration test scenarios covering all mentioned categories.
+I will provide the screenshot of the integration screen.
+
+
+Prompt for Automated Test Cases for each Scenario
+
+
+Generate detailed test cases from the following scenario. Create comprehensive, executable test cases with step-by-step instructions.
+**BASE SCENARIO:**
+- Scenario Name: FUN_001 - Verify successful creation of a new bed type with valid data
+- Category: Functional Testing (FUN)
+- Severity: Critical
+- Description: Test that users can successfully create a new bed type when providing valid input data in all required fields.
+**REQUIREMENTS:**
+1. Generate all possible test cases covering different valid data combinations
+2. Include database verification steps
+3. Include UI validation steps
+4. Cover both checkbox states (Active checked/unchecked)
+5. Include post-creation verification
+**TEST DATA VARIATIONS TO COVER:**
+- Standard bed type names: "King Bed","Queen Bed","Twin Bed"
+- Edge cases: Minimum character name (1 char if allowed), Maximum character name (50 chars)
+- Active state: Both checked and unchecked
+**EXPECTED BEHAVIORS TO VERIFY:**
+- Success notification/message appears
+- New bed type appears in the bed types grid
+- Correct data saved in database tables
+- Form resets or closes after successful creation
+**SPECIAL VERIFICATION POINTS:**
+- Check database table "bed_types" for new record
+- Verify timestamp fields (created_at, updated_at)
+- Verify
+"active" flag matches checkbox state
+- Check for duplicate prevention
+- Verify sorting in grid (alphabetical, recent first)
+**OUTPUT FORMAT:**
+Generate test cases in this exact table format with these columns:
+| Test Number | Category | Description | Pre-requisites | Steps and Procedures | Input Data | Expected Output
+| Actual Results | Severity | Status | Defect ID | Remark | Written By | Tested By |
+**COLUMN GUIDANCE:**
+- Test Number: TC_FUN_001_01, TC_FUN_001_02, etc.
+- Category: FUN, DB, UI, INPUTVAL
+- Description: Clear, specific test objective
+- Pre-requisites: Setup needed before test (logged in, on correct screen, etc.)
+- Steps and Procedures: Numbered, actionable steps
+- Input Data: Specific values to enter
+- Expected Output: What should happen at each step
+- Actual Results: Leave blank (for execution)
+- Severity: Critical/High/Medium/Low
+- Status: Not Executed
+- Defect ID: Leave blank
+- Remark: Leave blank
+- Written By: Leave blank
+- Tested By: Leave blank
+Generate all possible test cases with complete information in all columns.
